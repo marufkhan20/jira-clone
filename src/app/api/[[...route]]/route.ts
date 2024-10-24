@@ -1,15 +1,12 @@
+import auth from "@/features/auth/server/route";
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 
 const app = new Hono().basePath("/api");
 
-app.get("/hello", (c) => {
-  return c.json({ msg: "Hello world!" });
-});
-
-app.get("/projects/:projectid", (c) => {
-  const { projectid } = c.req.param();
-  return c.json({ projectId: projectid });
-});
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const routes = app.route("/auth", auth);
 
 export const GET = handle(app);
+export const POST = handle(app);
+export type AppType = typeof routes;
