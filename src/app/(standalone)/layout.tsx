@@ -1,7 +1,7 @@
 import { UserButton } from "@/features/auth/components/user-button";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 
 interface StandaloneLayoutProps {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const StandaloneLayout = ({ children }: StandaloneLayoutProps) => {
           <UserButton />
         </nav>
         <div className="flex flex-col items-center justify-center py-4">
-          {children}
+          <Suspense>{children}</Suspense>
         </div>
       </div>
     </main>
